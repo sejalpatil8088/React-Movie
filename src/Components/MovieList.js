@@ -9,11 +9,11 @@ const MovieList = ({ currentUser }) => {
     const fetchMovies = async () => {
       let url = '';
       
-      // Fetch default movies if no search term
+      
       if (searchTerm.trim() === '') {
-        url = `http://www.omdbapi.com/?s=batman&apikey=7c2b319f`; // Replace with your choice of default movies
+        url = `http://www.omdbapi.com/?s=batman&apikey=7c2b319f`; 
       } else {
-        // Fetch based on search term
+       
         url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=7c2b319f`;
       }
       
@@ -55,56 +55,6 @@ const MovieList = ({ currentUser }) => {
 };
 
 export default MovieList;
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-
-// const MovieList = () => {  
-//   const [searchTerm, setSearchTerm] = useState('');
-//   const [movies, setMovies] = useState([]);
-
-//   useEffect(() => {
-//     const fetchMovies = async () => {
-//       const response = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=7c2b319f`);
-//       const data = await response.json();
-//       setMovies(data.Search || []);
-//     };
-
-//     if (searchTerm.trim() !== '') {
-//       fetchMovies();
-//     } else {
-//       setMovies([]);
-//     }
-//   }, [searchTerm]);
-
-//   return (
-//     <div className="movie-list">
-//       <div className="search-container">
-//         <input
-//           type="text"
-//           value={searchTerm}
-//           onChange={(e) => setSearchTerm(e.target.value)}
-//           placeholder="Search movies..."
-//           className="search-input"
-//         />
-//       </div>
-//       <div className="movie-grid">
-//         {movies.map((movie) => (
-//           <div key={movie.imdbID} className="movie-card">
-//             <Link to={`/movie/${movie.imdbID}`}>
-//               <img src={movie.Poster} alt={movie.Title} className="movie-poster" />
-//               <h3 className="movie-title">{movie.Title}</h3>
-//             </Link>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MovieList;
 
 
 

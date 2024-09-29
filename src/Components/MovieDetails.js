@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const MovieDetails = ({ currentUser }) => {
-  const { id } = useParams(); // Get the movie ID from URL parameters
+  const { id } = useParams(); 
   const [movie, setMovie] = useState(null);
   const [users, setUsers] = useState([]);
 
@@ -14,11 +14,11 @@ const MovieDetails = ({ currentUser }) => {
       console.log(data);
       
 
-      // Check if movie data is valid
+      
       if (data.Response === "True") {
         setMovie(data);
       } else {
-        console.error(data.Error); // Log any error messages
+        console.error(data.Error); 
       }
     };
 
@@ -50,7 +50,7 @@ const MovieDetails = ({ currentUser }) => {
         <img src={movie.Poster} alt={movie.Title} />
       </div>
       <div className="movie-info">
-        <h2>{movie.Title}</h2>
+        <h2 className='movie-title'>{movie.Title}</h2>
         <p>Year: {movie.Year}</p>
         <p>Director: {movie.Director}</p>
         <p>Actors: {movie.Actors}</p>
