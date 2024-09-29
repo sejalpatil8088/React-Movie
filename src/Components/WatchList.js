@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const WatchList = ({ currentUser }) => {
+  console.log('Current User in WatchList:', currentUser);
   return (
     <div className="watchlist">
       <h2>Your Watchlist</h2>
