@@ -11,7 +11,7 @@ const MovieDetails = ({ currentUser }) => {
     const fetchMovieDetails = async () => {
       const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=7c2b319f`);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       
 
       
@@ -26,7 +26,15 @@ const MovieDetails = ({ currentUser }) => {
   }, [id]);
 
   const addToWatchlist = () => {
+    console.log("addToWatchlist" , currentUser);
+    
+    
+    
     if (currentUser) {
+     console.log("movie" , movie);
+     
+    
+      
       const updatedUser = {
         ...currentUser,
         watchlist: [...currentUser.watchlist, movie],
@@ -50,12 +58,15 @@ const MovieDetails = ({ currentUser }) => {
         <img src={movie.Poster} alt={movie.Title} />
       </div>
       <div className="movie-info">
-        <h2 className='movie-title'>{movie.Title}</h2>
+        <h2 >{movie.Title}</h2>
         <p>Year: {movie.Year}</p>
         <p>Director: {movie.Director}</p>
         <p>Actors: {movie.Actors}</p>
         <p>Plot: {movie.Plot}</p>
-        <button className="add-to-watchlist" onClick={addToWatchlist}>
+        <button className="add-to-watchlist" onClick={(movie) => addToWatchlist(movie)}>
+
+
+
           Add to Watchlist
         </button>
       </div>

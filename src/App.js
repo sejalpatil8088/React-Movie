@@ -49,14 +49,15 @@ const App = () => {
   const addToWatchlist = (movie) => {
     
     if (currentUser) {
-      console.log('Current User Before Update:', currentUser);
-      const updatedUser = { ...currentUser, watchlist: [...currentUser.watchlist, movie] };
-      console.log('Updated User:', updatedUser);
-      const updatedUsers = users.map((u) => (u.email === currentUser.email ? updatedUser : u));
-      console.log('Updated Users:', updatedUsers);
-      setUsers(updatedUsers);
-      setCurrentUser(updatedUser); 
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
+      // console.log('Current User Before Update:', currentUser);
+      // const updatedUser = { ...currentUser, watchlist: [...currentUser.watchlist, movie] };
+      // console.log('Updated User:', updatedUser);
+      currentUser.watchlist = [...currentUser.watchlist, movie]
+      // const updatedUsers = users.map((u) => (u.email === currentUser.email ? updatedUser : u));
+      // console.log('Updated Users:', updatedUsers);
+      // setUsers(updatedUsers);
+      setCurrentUser(currentUser); 
+      localStorage.setItem('users', JSON.stringify(currentUser));
       alert(`${movie.Title} added to your watchlist!`);
     } else {
       alert('Please log in to add movies to your watchlist.');
@@ -72,7 +73,7 @@ const App = () => {
       setUsers(updatedUsers);
       setCurrentUser(updatedUser); 
       localStorage.setItem('users', JSON.stringify(updatedUsers));
-      console.log('Users in Local Storage:', JSON.parse(localStorage.getItem('users')));
+      // console.log('Users in Local Storage:', JSON.parse(localStorage.getItem('users')));
       alert('Movie removed from your watchlist!');
     }
   };
